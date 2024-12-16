@@ -1,23 +1,17 @@
 import axios from "axios";
 
-const base_url="https://crud-server-9n64.onrender.com"
+const base_url="http://localhost:3000/tasks"
 
-export const addContactApi=async(data)=>{
-    return await axios.post(`${base_url}/contacts`,data)
+
+export const fetchTasks = async() =>{
+ return await axios.get(`${base_url}`)
+    }
+export const addTask = async(task) =>{
+ return await axios.post(`${base_url}`, task)
 }
-
-export const getContactApi=async()=>{
-    return await axios.get(`${base_url}/contacts`)
+export const updateTask =async (id, updatedTask) => {
+    axios.put(`${base_url}/${id}`, updatedTask)
 }
-
-export const getOneContactApi=async(id)=>{
-    return await axios.get(`${base_url}/contacts/${id}`)
-}
-
-export const deleteContactApi=async(id)=>{
-    return await axios.delete(`${base_url}/contacts/${id}`)
-}
-
-export const updateContactApi=async(id,data)=>{
-    return await axios.put(`${base_url}/contacts/${id}`,data)
+export const deleteTask =async (id) =>{
+     axios.delete(`${base_url}/${id}`)
 }
